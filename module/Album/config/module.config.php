@@ -1,23 +1,25 @@
 <?php
 namespace Album;
 
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'controllers' => [
         'factories' => [
-            Controller\Album::class => InvokableFactory::class,
+            Controller\AlbumController::class => InvokableFactory::class,
         ],
     ],
     'router' => [
         'routes' => [
-            'module-name-here' => [
-                'type'    => 'Literal',
+            'album' => [
+                'type'    => Literal::class,
                 'options' => [
                     // Change this to something specific to your module
-                    'route'    => '/module-specific-root',
+                    'route'    => '/album',
                     'defaults' => [
-                        'controller'    => Controller\Album::class,
+                        'controller'    => Controller\AlbumController::class,
                         'action'        => 'index',
                     ],
                 ],
