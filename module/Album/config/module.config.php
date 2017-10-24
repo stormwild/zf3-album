@@ -14,10 +14,14 @@ return [
     'router' => [
         'routes' => [
             'album' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
                     // Change this to something specific to your module
-                    'route'    => '/album',
+                    'route'    => '/album[/:action[/:id]][/]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
                     'defaults' => [
                         'controller'    => Controller\AlbumController::class,
                         'action'        => 'index',
